@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FABIO Clothing — streetwear premium. T-shirts, hoodies, sweats et cargos.">
+<title>FABIO CLOTHING — Shop</title>
+<style>
+:root{--bg:#080808;--card:#111;--card2:#151515;--text:#f6f6f6;--muted:#999;--line:#292929;--silver:#d7d7d7;--danger:#c9c9c9}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin:auto}
+header{position:fixed;z-index:50;top:0;left:0;right:0;height:74px;background:rgba(8,8,8,.84);backdrop-filter:blur(16px);border-bottom:1px solid #222}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo-word{font-weight:900;letter-spacing:.28em;font-size:17px}.logo-word small{display:block;font-size:7px;color:#888;letter-spacing:.5em;margin-top:1px}
+.navlinks{display:flex;gap:25px;font-size:12px;color:#bbb}.navlinks a:hover{color:#fff}
+.cart-btn{background:#f1f1f1;color:#050505;border:0;border-radius:999px;padding:10px 15px;font-size:12px;font-weight:800}
+.count{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:50%;background:#111;color:#fff;margin-left:5px}
+.hero{padding:74px 0 0;min-height:85vh;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 30%,#333 0,#171717 20%,transparent 55%),linear-gradient(120deg,#070707,#151515,#070707)}
+.hero:after{content:"FB";position:absolute;right:-5vw;bottom:-15vw;font:900 42vw/1 Georgia,serif;color:rgba(255,255,255,.025)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:90px 0}.eyebrow{text-transform:uppercase;letter-spacing:.45em;color:#999;font-size:10px}
+.hero h1{font-size:clamp(58px,11vw,140px);letter-spacing:-.075em;line-height:.82;margin:22px 0}.hero h1 span{color:#999}
+.hero p{max-width:560px;color:#aaa;margin:0 auto 25px;font-size:14px}
+.btn{border:0;background:#f2f2f2;color:#080808;padding:14px 21px;border-radius:4px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;font-size:11px}
+.btn.dark{background:transparent;color:#fff;border:1px solid #444;margin-left:6px}
+section{padding:90px 0}.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.section-title h2{font-size:38px;letter-spacing:-.045em}.section-title p{font-size:12px;color:#777}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid #333;background:transparent;color:#aaa;border-radius:99px;padding:8px 14px;font-size:11px}.filter.active,.filter:hover{background:#eee;color:#111;border-color:#eee}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:.25s}.product:hover{transform:translateY(-4px);border-color:#444}
+.visual{height:370px;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#242424,#0d0d0d)}
+.garment{position:relative;width:48%;height:69%;border-radius:10px 10px 7px 7px;box-shadow:0 30px 60px #000}.garment:before,.garment:after{content:"";position:absolute;top:4%;width:43%;height:35%;background:inherit}.garment:before{left:-31%;transform:skewY(20deg);border-radius:8px}.garment:after{right:-31%;transform:skewY(-20deg);border-radius:8px}
+.hood{width:57%;height:72%;border-radius:22px 22px 8px 8px}.hood:before{left:28%;top:-12%;width:44%;height:24%;border-radius:50%;transform:none}
+.cargo{width:43%;height:75%;border-radius:7px;background:#252525!important}.cargo:before,.cargo:after{display:none}.pocket{position:absolute;border:2px solid #444;width:30%;height:20%;top:20%}.p1{left:7%}.p2{right:7%}
+.fbmark{position:absolute;z-index:3;top:25%;left:50%;transform:translateX(-50%);font:900 42px Georgia,serif;letter-spacing:-.18em;color:#ddd;text-shadow:0 2px 10px #000}.fbmark small{display:block;font:8px Arial;letter-spacing:.32em;text-align:center;margin-top:-3px}
+.crown{position:absolute;top:12%;left:50%;transform:translateX(-50%);font-size:22px;z-index:4;color:#ddd}
+.product-info{padding:18px}.product-info h3{font-size:16px}.line{display:flex;justify-content:space-between;gap:12px;color:#999;font-size:12px;margin-top:6px}.price{color:#fff;font-weight:800}.view{width:100%;margin-top:14px;background:#eee;border:0;color:#090909;padding:11px;font-size:11px;font-weight:900;text-transform:uppercase}
+.colors{display:flex;gap:6px;margin-top:12px}.dot{width:15px;height:15px;border-radius:50%;border:1px solid #666}
+.story{border-block:1px solid #242424;background:#0e0e0e;text-align:center}.story h2{font-size:clamp(34px,6vw,70px);letter-spacing:-.06em}.story p{color:#888;margin:10px 0 20px}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.feature{border:1px solid #252525;background:#0f0f0f;padding:24px}.feature b{display:block;margin-bottom:8px}.feature p{font-size:12px;color:#888}
+footer{border-top:1px solid #222;padding:40px 0;color:#777;font-size:11px}.foot{display:flex;justify-content:space-between;gap:20px}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:100;display:none}.overlay.show{display:block}
+.drawer{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:#0d0d0d;border-left:1px solid #333;padding:24px;overflow:auto}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.close{background:none;border:0;color:#fff;font-size:28px}
+.cart-item{display:grid;grid-template-columns:65px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid #262626}.thumb{height:65px;background:#222;display:grid;place-items:center}.mini{width:42%;height:65%;background:#111;border-radius:4px}.cart-item h4{font-size:13px}.cart-item p{font-size:11px;color:#888;margin-top:4px}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{width:23px;height:23px;border:1px solid #444;background:#171717;color:#fff}.remove{background:none;border:0;color:#777;font-size:11px}
+.total{display:flex;justify-content:space-between;font-size:18px;font-weight:900;padding:20px 0}.whatsapp{display:block;text-align:center;background:#e8e8e8;color:#070707;padding:14px;border-radius:4px;font-size:12px;font-weight:900;text-transform:uppercase}.note{font-size:10px;color:#666;text-align:center;margin-top:9px}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:90;display:none;place-items:center;padding:20px}.modal.show{display:grid}.modal-box{width:min(900px,100%);max-height:92vh;overflow:auto;background:#101010;border:1px solid #333;display:grid;grid-template-columns:1fr 1fr}.modal-visual{min-height:520px;display:grid;place-items:center;background:radial-gradient(circle,#292929,#0b0b0b)}.modal-content{padding:34px}.modal-content h2{font-size:36px;letter-spacing:-.04em}.modal-content .desc{color:#999;font-size:13px;margin:10px 0 25px}.close2{float:right;background:none;border:0;color:#fff;font-size:25px}.label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:#777;margin:18px 0 8px}.choices{display:flex;gap:8px;flex-wrap:wrap}.choice{background:#151515;color:#ddd;border:1px solid #444;padding:9px 14px;font-size:11px}.choice.selected{background:#eee;color:#111}.add{width:100%;margin-top:22px;padding:15px;border:0;background:#eee;font-weight:900;text-transform:uppercase;font-size:11px}
+@media(max-width:800px){.navlinks{display:none}.products{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}.modal-box{grid-template-columns:1fr}.modal-visual{min-height:300px}}
+@media(max-width:520px){.products{grid-template-columns:1fr}.features{grid-template-columns:1fr}.section-title{display:block}.section-title p{margin-top:8px}.hero{min-height:78vh}.modal-content{padding:22px}}
+
+/* ===== FABIO PREMIUM EXPERIENCE ===== */
+body{overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.018) 45%,transparent 55%);opacity:.35}
+header{transition:background .35s,box-shadow .35s}
+header.scrolled{background:rgba(7,7,7,.96);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.hero{min-height:94vh;background:
+radial-gradient(circle at 18% 35%,rgba(255,255,255,.09),transparent 23%),
+radial-gradient(circle at 82% 25%,rgba(255,255,255,.08),transparent 26%),
+linear-gradient(125deg,#050505 0%,#111 45%,#070707 100%)}
+.hero-content{animation:heroIn 1s cubic-bezier(.2,.8,.2,1) both}
+.hero h1{background:linear-gradient(100deg,#fff 10%,#777 48%,#fff 82%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:180% auto;animation:shine 7s ease-in-out infinite}
+.eyebrow:before{content:"";display:inline-block;width:35px;height:1px;background:#777;vertical-align:middle;margin-right:12px}
+.eyebrow:after{content:"";display:inline-block;width:35px;height:1px;background:#777;vertical-align:middle;margin-left:12px}
+.btn{transition:transform .25s,box-shadow .25s,background .25s}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,255,255,.12)}
+.btn.dark:hover{background:#fff;color:#080808}
+.section{position:relative}
+.section:before{content:"";position:absolute;left:50%;top:0;width:1px;height:50px;background:linear-gradient(#444,transparent);opacity:.5}
+.product{position:relative;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
+.product:hover{transform:translateY(-8px);border-color:#555;box-shadow:0 25px 60px rgba(0,0,0,.28)}
+.visual{background:radial-gradient(circle at 50% 35%,#303030 0,#171717 28%,#0b0b0b 72%)}
+.visual:before{content:"";position:absolute;width:170px;height:170px;border:1px solid rgba(255,255,255,.07);border-radius:50%;animation:spin 18s linear infinite}
+.visual:after{content:"";position:absolute;width:250px;height:250px;border:1px solid rgba(255,255,255,.035);border-radius:50%}
+.garment,.hood,.cargo{transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .45s}
+.product:hover .garment,.product:hover .hood,.product:hover .cargo{transform:scale(1.045) rotate(-1deg);filter:brightness(1.12)}
+.product-info{position:relative}
+.view{transition:.25s}.view:hover{background:#fff;letter-spacing:.13em}
+.colors .dot{transition:transform .2s}.colors .dot:hover{transform:scale(1.25)}
+.story{position:relative;overflow:hidden;padding:120px 0;background:
+radial-gradient(circle at 50% 50%,rgba(255,255,255,.055),transparent 38%),#0b0b0b}
+.story:before,.story:after{content:"";position:absolute;top:50%;width:30vw;height:1px;background:linear-gradient(90deg,transparent,#444);opacity:.5}.story:before{right:55%}.story:after{left:55%;transform:rotate(180deg)}
+.story h2{position:relative;z-index:1}
+.feature{transition:.3s;border-radius:3px}.feature:hover{transform:translateY(-5px);background:#141414;border-color:#444}
+.feature b:before{content:"✦";color:#777;margin-right:8px}
+.modal-box{box-shadow:0 30px 100px rgba(0,0,0,.65);animation:modalIn .3s ease both}
+.modal-visual{position:relative}
+.drawer{box-shadow:-25px 0 80px rgba(0,0,0,.45);animation:drawerIn .3s ease both}
+.cart-btn{transition:.2s}.cart-btn:hover{transform:scale(1.03)}
+.cart-btn.bump{animation:bump .35s ease}
+.scroll-line{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.3em;color:#777;z-index:3}.scroll-line span{display:block;width:1px;height:35px;background:#555;margin:8px auto 0;animation:scrollPulse 1.8s infinite}
+@keyframes heroIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes shine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes modalIn{from{opacity:0;transform:scale(.97) translateY(10px)}to{opacity:1;transform:none}}
+@keyframes drawerIn{from{transform:translateX(100%)}to{transform:none}}
+@keyframes bump{50%{transform:scale(1.12)}}
+@keyframes scrollPulse{50%{opacity:.2;transform:translateY(7px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<header><div class="container nav">
+<a href="#" class="logo-word">FABIO<small>CLOTHING</small></a>
+<nav class="navlinks"><a href="#shop">Shop</a><a href="#vision">Vision</a><a href="#contact">Contact</a></nav>
+<button class="cart-btn" onclick="openCart()">Panier <span class="count" id="cartCount">0</span></button>
+</div></header>
+
+<main>
+<section class="hero"><div class="container hero-content">
+<div class="eyebrow">FABIO CLOTHING · NEW DROP</div>
+<h1>DREAMS<br><span>BUILD</span> REALITY.</h1>
+<p>Streetwear premium pensé pour ceux qui avancent avec leur propre style. Découvrez les pièces FB.</p>
+<a class="btn" href="#shop">Shop the drop</a><a class="btn dark" href="#vision">Découvrir la marque</a>
+<div class="scroll-line">SCROLL<span></span></div></div></section>
+
+<section id="shop"><div class="container">
+<div class="section-title"><h2>Shop</h2><p>Pièces disponibles · livraison à définir</p></div>
+<div class="filters">
+<button class="filter active" onclick="filterProducts('all',this)">Tout</button>
+<button class="filter" onclick="filterProducts('tee',this)">T-Shirts</button>
+<button class="filter" onclick="filterProducts('hoodie',this)">Hoodies</button>
+<button class="filter" onclick="filterProducts('sweat',this)">Sweats</button>
+<button class="filter" onclick="filterProducts('cargo',this)">Cargos</button>
+</div>
+<div class="products" id="products"></div>
+</div></section>
+
+
+<section style="padding:18px 0;border-block:1px solid #222;background:#090909;overflow:hidden">
+  <div style="display:flex;justify-content:center;gap:45px;flex-wrap:wrap;color:#777;font-size:9px;letter-spacing:.28em;text-transform:uppercase">
+    <span>✦ Premium streetwear</span><span>✦ Limited drop</span><span>✦ FB signature</span><span>✦ Dreams Build Reality</span>
+  </div>
+</section>
+
+<section class="story" id="vision"><div class="container">
+<h2>MORE THAN JUST CLOTHES.</h2><p>Style · Discipline · Ambition</p><a class="btn" href="#shop">Voir la collection</a>
+</div></section>
+
+<section><div class="container"><div class="section-title"><h2>L'esprit FB</h2></div>
+<div class="features">
+<div class="feature"><b>Qualité</b><p>Des matières choisies pour une silhouette confortable et durable.</p></div>
+<div class="feature"><b>Identité</b><p>Le monogramme FB et la couronne comme signature visuelle.</p></div>
+<div class="feature"><b>Coupe</b><p>Volumes relaxed et streetwear faciles à associer.</p></div>
+<div class="feature"><b>Collection</b><p>Black, grey, cream, navy, olive, burgundy et white.</p></div>
+</div></div></section>
+</main>
+
+<footer id="contact"><div class="container foot"><strong>FABIO CLOTHING</strong><span>© 2026 · Dreams Build Reality</span><span>Instagram · TikTok · WhatsApp</span></div></footer>
+
+<div class="modal" id="productModal" onclick="if(event.target===this)closeProduct()">
+<div class="modal-box">
+<div class="modal-visual" id="modalVisual"></div>
+<div class="modal-content"><button class="close2" onclick="closeProduct()">×</button><div class="eyebrow">FABIO CLOTHING</div><h2 id="modalName"></h2><div class="line"><span id="modalDesc"></span><span class="price" id="modalPrice"></span></div>
+<div class="label">Couleur</div><div class="choices" id="colorChoices"></div>
+<div class="label">Taille</div><div class="choices" id="sizeChoices"></div>
+<button class="add" onclick="addCurrent()">Ajouter au panier</button></div>
+</div></div>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer">
+<div class="drawer-head"><h2>Votre panier</h2><button class="close" onclick="closeCart()">×</button></div>
+<div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">0,00 €</span></div>
+<a id="whatsapp" class="whatsapp" target="_blank">Commander sur WhatsApp</a>
+<p class="note">Remplace le numéro WhatsApp dans le code avant de publier le site.</p>
+</aside></div>
+
+<script>
+const WHATSAPP_NUMBER="261381120854"; // Exemple: 261341234567 — à remplacer par ton numéro
+const products=[
+{id:1,type:"tee",name:"FB Signature T-Shirt",price:29.90,desc:"Oversized · coton premium",colors:["Black","White","Cream"],sizes:["S","M","L","XL"],bg:"#090909"},
+{id:2,type:"hoodie",name:"FB Crown Hoodie",price:59.90,desc:"Coupe large · logo brodé",colors:["Black","Grey","Navy","Burgundy"],sizes:["S","M","L","XL"],bg:"#0b0b0b"},
+{id:3,type:"sweat",name:"FB Essential Crewneck",price:49.90,desc:"Sweat sans capuche · relaxed fit",colors:["Black","Grey","Cream","Olive"],sizes:["S","M","L","XL"],bg:"#151515"},
+{id:4,type:"cargo",name:"FB Cargo Denim",price:69.90,desc:"Loose fit · poches cargo",colors:["Black","Grey","Olive","Cream"],sizes:["28","30","32","34","36"],bg:"#252525"},
+{id:5,type:"hoodie",name:"FB Dreams Hoodie",price:64.90,desc:"Grand logo dos · coton doux",colors:["Black","Cream","Navy"],sizes:["S","M","L","XL"],bg:"#0b0b0b"},
+{id:6,type:"cargo",name:"FB Utility Cargo",price:74.90,desc:"Coupe baggy · détails premium",colors:["Black","Olive","Navy"],sizes:["28","30","32","34","36"],bg:"#242424"}
+];
+let cart=JSON.parse(localStorage.getItem("fabioCart")||"[]"),current=null,chosenColor="",chosenSize="";
+
+function visual(p,large=false){
+let cls=p.type==="hoodie"?"hood":p.type==="cargo"?"cargo":"garment";
+let pockets=p.type==="cargo"?'<i class="pocket p1"></i><i class="pocket p2"></i>':"";
+return `<div class="${cls}" style="background:${p.bg}">${pockets}<span class="crown">♛</span><span class="fbmark">FB<small>FABIO</small></span></div>`;
+}
+function render(list=products){
+document.getElementById("products").innerHTML=list.map(p=>`<article class="product">
+<div class="visual">${visual(p)}</div><div class="product-info"><h3>${p.name}</h3><div class="line"><span>${p.desc}</span><span class="price">${p.price.toFixed(2).replace(".",",")} €</span></div>
+<div class="colors">${p.colors.map((c,i)=>`<span class="dot" title="${c}" style="background:${color(c)}"></span>`).join("")}</div>
+<button class="view" onclick="openProduct(${p.id})">Voir le produit</button></div></article>`).join("");
+}
+function color(c){return {Black:"#090909",White:"#eee",Cream:"#d7cdbb",Grey:"#777",Navy:"#17263b",Burgundy:"#54212a",Olive:"#3c432d"}[c]||"#999"}
+function filterProducts(type,btn){document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));btn.classList.add("active");render(type==="all"?products:products.filter(p=>p.type===type))}
+function openProduct(id){
+current=products.find(p=>p.id===id);chosenColor=current.colors[0];chosenSize=current.sizes[1]||current.sizes[0];
+document.getElementById("modalName").textContent=current.name;document.getElementById("modalDesc").textContent=current.desc;document.getElementById("modalPrice").textContent=current.price.toFixed(2).replace(".",",")+" €";
+document.getElementById("modalVisual").innerHTML=visual(current,true);
+document.getElementById("colorChoices").innerHTML=current.colors.map(c=>`<button class="choice ${c===chosenColor?"selected":""}" onclick="selectColor('${c}',this)">${c}</button>`).join("");
+document.getElementById("sizeChoices").innerHTML=current.sizes.map(s=>`<button class="choice ${s===chosenSize?"selected":""}" onclick="selectSize('${s}',this)">${s}</button>`).join("");
+document.getElementById("productModal").classList.add("show");
+}
+function selectColor(c,b){chosenColor=c;document.querySelectorAll("#colorChoices .choice").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")}
+function selectSize(s,b){chosenSize=s;document.querySelectorAll("#sizeChoices .choice").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")}
+function closeProduct(){document.getElementById("productModal").classList.remove("show")}
+function addCurrent(){cart.push({id:current.id,name:current.name,price:current.price,color:chosenColor,size:chosenSize,qty:1});save();closeProduct();openCart()}
+function save(){
+localStorage.setItem("fabioCart",JSON.stringify(cart));renderCart();
+const b=document.querySelector(".cart-btn"); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump");
+}
+function removeItem(i){cart.splice(i,1);save()}
+function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);save()}
+function renderCart(){
+let count=cart.reduce((a,x)=>a+x.qty,0),total=cart.reduce((a,x)=>a+x.price*x.qty,0);
+document.getElementById("cartCount").textContent=count;document.getElementById("cartTotal").textContent=total.toFixed(2).replace(".",",")+" €";
+document.getElementById("cartItems").innerHTML=cart.length?cart.map((x,i)=>`<div class="cart-item"><div class="thumb"><div class="mini"></div></div><div><h4>${x.name}</h4><p>${x.color} · Taille ${x.size} · ${x.price.toFixed(2).replace(".",",")} €</p><div class="qty"><button onclick="changeQty(${i},-1)">−</button><span>${x.qty}</span><button onclick="changeQty(${i},1)">+</button></div></div><button class="remove" onclick="removeItem(${i})">Supprimer</button></div>`).join(""):"<p style='color:#777;font-size:13px;padding:20px 0'>Ton panier est vide.</p>";
+let message="Bonjour FABIO Clothing 👋%0A%0AJe souhaite commander :%0A"+cart.map(x=>`• ${x.name} — ${x.color} — taille ${x.size} — x${x.qty}`).join("%0A")+`%0A%0ATotal estimé : ${total.toFixed(2).replace(".",",")} €`;
+document.getElementById("whatsapp").href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+message;
+}
+function openCart(){renderCart();document.getElementById("cartOverlay").classList.add("show")}
+function closeCart(){document.getElementById("cartOverlay").classList.remove("show")}
+render(products);renderCart();
+window.addEventListener("scroll",()=>document.querySelector("header").classList.toggle("scrolled",window.scrollY>20));
+</script>
+</body></html>
